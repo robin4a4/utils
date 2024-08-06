@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+languages=$(echo "golang typescript c cpp python ruby javascript rust bash" | tr ' ' '\n')
+core_utils=$(echo "awk sed grep find xargs" | tr ' ' '\n')
+selected=$(echo -e "$languages\n$core_utils" | fzf)
+
+read -p "Enter your query: " query
+
+tmux_command=""
+
+if echo "$languages" | grep -qs "$selected"; then
+    tmux_command="curl -s cht.sh/$selected/$(echo $query | tr ' ' '+') | less"
+else
+    tmux_command="curl -s cht.sh/$selected~$query | less"
+fi
+
+# Check if the script is running inside tmux
+if [ -z "$TMUX" ]; then
+    # Not running inside tmux, create a new tmux session and split the window
+    tmux new-session \; \
+        split-window -h bash -c "$tmux_command" \; \
+        attach
+else
+    # Running inside tmux, just split the window
+    tmux split-window -h bash -c "$tmux_command"
+fi
