@@ -15,6 +15,7 @@
     "window.nativeFullScreen": false,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+    "editor.inlineSuggest.enabled": true,
 
     /**
     * Hide Everything
@@ -29,11 +30,9 @@
     * Silence The Noise
     */
     "breadcrumbs.enabled": false,
-    "editor.hover.enabled": false,
     "editor.matchBrackets": "never",
     "workbench.tips.enabled": false,
     "editor.colorDecorators": false,
-    "git.decorations.enabled": false,
     "workbench.startupEditor": "none",
     "editor.lightbulb.enabled": "off",
     "editor.overviewRulerBorder": false,
@@ -100,4 +99,5 @@
   "editor.guides.indentation": false,
   "editor.cursorSmoothCaretAnimation": "on",
   "workbench.iconTheme": "vscode-great-icons",
+  "files.saveConflictResolution": "overwriteFileOnDisk",
   }
